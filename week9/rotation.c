@@ -45,14 +45,12 @@ int main() {
 	{
 		for (int i = 0; i < width; i++)
 		{
-			x1 = j;
-			y1 = i;
+			x1 = i;
+			y1 = j;
 			x2 = cos(seta) * (x1 - x0) - sin(seta) * (y1 - y0) + x0;
 			y2 = sin(seta) * (x1 - x0) + cos(seta) * (y1 - y0) + y0;
-			if (x2 < 0 || x2 > 511 || y2 < 0 || y2 > 511)
-				Y2[j * width + i] = 0;
-			else
-				Y2[j * width + i] = Y1[x2 * width + y2];
+			if (x2 >= 0 && x2 <= 512 && y2 >= 0 && y2 <= 512)
+				Y2[y2 * width + x2] = Y1[j * width + i];;
 		}
 	}
 	for (int j = 0; j < height; j++)
