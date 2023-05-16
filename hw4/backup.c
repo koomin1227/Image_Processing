@@ -190,36 +190,37 @@ void upsampling()
 	{
 		for (int i = 0; i < width; i++)
 		{
-			
+			if (j == 100)
+				printf("d");
 			if (j < height - 1 && i < width - 1)
 			{
-				Y2[(j * 2) * width2 + (i * 2)] = Y1[(j) * width + (i)];
-				Y2[(j * 2) * width2 + (i * 2 + 1)] = (Y1[(j)* width + (i)] + Y1[(j)* width + (i + 1)])/2;
-				Y2[(j * 2) * width2 + (i * 2 + 2)] = Y1[(j)* width + (i + 1)];
+				Y2[(j * 4) * width2 + (i * 4)] = Y1[(j) * width + (i)];
+				Y2[(j * 4) * width2 + (i * 4 + 1)] = (Y1[(j)* width + (i)] + Y1[(j)* width + (i + 1)])/2;
+				Y2[(j * 4) * width2 + (i * 4 + 2)] = Y1[(j)* width + (i + 1)];
 
-				Y2[(j * 2+1) * width2 + (i * 2)] = (Y1[(j)* width + (i)] + Y1[(j + 1)* width + (i)])/2;
-				Y2[(j * 2+1) * width2 + (i * 2 + 1)] = (Y1[(j)* width + (i)] + Y1[(j)* width + (i + 1)] + Y1[(j + 1)* width + (i)] + Y1[(j + 1)* width + (i + 1)])/4;
-				Y2[(j * 2+1) * width2 + (i * 2 + 2)] = (Y1[(j)* width + (i + 1)] + Y1[(j + 1)* width + (i + 1)]) / 2;
+				Y2[(j * 4+1) * width2 + (i * 4)] = (Y1[(j)* width + (i)] + Y1[(j + 1)* width + (i)])/2;
+				Y2[(j * 4+1) * width2 + (i * 4 + 1)] = (Y1[(j)* width + (i)] + Y1[(j)* width + (i + 1)] + Y1[(j + 1)* width + (i)] + Y1[(j + 1)* width + (i + 1)])/4;
+				Y2[(j * 4+1) * width2 + (i * 4 + 2)] = (Y1[(j)* width + (i + 1)] + Y1[(j + 1)* width + (i + 1)]) / 2;
 
-				Y2[(j * 2+2) * width2 + (i * 2)] = Y1[(j + 1)* width + (i)];
-				Y2[(j * 2+2) * width2 + (i * 2 + 1)] = (Y1[(j + 1)* width + (i)] + Y1[(j + 1)* width + (i + 1)])/2;
-				Y2[(j * 2+2) * width2 + (i * 2 + 2)] = Y1[(j + 1)* width + (i + 1)];
+				Y2[(j * 4+2) * width2 + (i * 4)] = Y1[(j + 1)* width + (i)];
+				Y2[(j * 4+2) * width2 + (i * 4 + 1)] = (Y1[(j + 1)* width + (i)] + Y1[(j + 1)* width + (i + 1)])/2;
+				Y2[(j * 4+2) * width2 + (i * 4 + 2)] = Y1[(j + 1)* width + (i + 1)];
 			}
 			else if (j == height - 1 && i < width - 1)
 			{
-				Y2[(j * 2) * width2 + (i * 2)] = Y1[(j)* width + (i)];
-				Y2[(j * 2) * width2 + (i * 2 + 1)] = (Y1[(j)* width + (i)] + Y1[(j)* width + (i + 1)]) / 2;
-				Y2[(j * 2) * width2 + (i * 2 + 2)] = Y1[(j)* width + (i + 1)];
+				Y2[(j * 4) * width2 + (i * 4)] = Y1[(j)* width + (i)];
+				Y2[(j * 4) * width2 + (i * 4 + 1)] = (Y1[(j)* width + (i)] + Y1[(j)* width + (i + 1)]) / 2;
+				Y2[(j * 4) * width2 + (i * 4 + 2)] = Y1[(j)* width + (i + 1)];
 			}
 			else if (i == width - 1 && j < height - 1)
 			{
-				Y2[(j * 2) * width2 + (i * 2)] = Y1[(j)* width + (i)];
-				Y2[(j * 2 + 1) * width2 + (i * 2)] = (Y1[(j)* width + (i)] + Y1[(j + 1)* width + (i)]) / 2;
-				Y2[(j * 2 + 2) * width2 + (i * 2)] = Y1[(j + 1)* width + (i)];
+				Y2[(j * 4) * width2 + (i * 4)] = Y1[(j)* width + (i)];
+				Y2[(j * 4 + 1) * width2 + (i * 4)] = (Y1[(j)* width + (i)] + Y1[(j + 1)* width + (i)]) / 2;
+				Y2[(j * 4 + 2) * width2 + (i * 4)] = Y1[(j + 1)* width + (i)];
 			}
 			else if (j == height - 1 && i == width - 1)
 			{
-				Y2[(j * 2 + 1) * width2 + (i * 2 + 1)] = Y1[(j)* width + (i)];
+				Y2[(j * 4 + 1) * width2 + (i * 4 + 1)] = Y1[(j)* width + (i)];
 			}
 			//Y2[j * width2 + i] = Y1[(j >> ratio) * width + (i >> ratio)];
 		}
