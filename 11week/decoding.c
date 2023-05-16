@@ -33,13 +33,13 @@ int main() {
 	fread(inputImg, sizeof(unsigned char), size, inputFile1);
 	Y1 = (unsigned char*)malloc(sizeof(unsigned char) * (width * height));
 	Y2 = (unsigned char*)calloc((width * height), sizeof(unsigned char));
-	for (int j = 0; j < height; j++)
-	{
-		for (int i = 0; i < width; i++)
-		{
-			Y1[j * width + i] = inputImg[j * stride + 3 * i + 0];
-		}
-	}
+	//for (int j = 0; j < height; j++)
+	//{
+	//	for (int i = 0; i < width; i++)
+	//	{
+	//		Y1[j * width + i] = fscanf("%d ", textFile);
+	//	}
+	//}
 
 	for (int j = 0; j < height; j++)
 	{
@@ -67,8 +67,8 @@ int main() {
 	free(inputImg);
 	free(outputImg_rotate);
 
-	free(Y1);
-	free(Y2);
+	//free(Y1);
+	//free(Y2);
 
 	fclose(inputFile1);
 	fclose(textFile);
