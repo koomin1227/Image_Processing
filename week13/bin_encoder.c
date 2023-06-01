@@ -51,11 +51,15 @@ int main() {
 			if (i == 0)
 			{
 				P[j * width + i] = (Y1[j * width + i] - 128) / 5;
-				R[j * width + i] = 128 + (P[j * width + i] / 5) * 5;
+				if (P[j * width + i] < -3) P[j * width + i] = -4;
+				else if (P[j * width + i] > 2) P[j * width + i] = 3;
+				R[j * width + i] = 128 + (P[j * width + i]) * 5;
 			}
 			else {
-				P[j * width + i] = (Y1[j * width + i] - R[j * width + i - 1])/5;
-				R[j * width + i] = R[j * width + i - 1] + (P[j * width + i] / 5) * 5;
+				P[j * width + i] = (Y1[j * width + i] - R[j * width + i - 1]) / 5;
+				if (P[j * width + i] < -3) P[j * width + i] = -4;
+				else if (P[j * width + i] > 2) P[j * width + i] = 3;
+				R[j * width + i] = R[j * width + i - 1] + (P[j * width + i]) * 5;
 			}
 		}
 	}
@@ -73,7 +77,7 @@ int main() {
 			else if (P[j * width + i] == 1) bin = "101";
 			else if (P[j * width + i] == 2) bin = "110";
 			else if (P[j * width + i] > 2) bin = "111";
-			fprintf(textFile, "[%d] %s ", P[j * width + i], bin);
+			fprintf(textFile, "%s",bin);
 			outputImg_rotate[j * stride + 3 * i + 0] = R[j * width + i];
 			outputImg_rotate[j * stride + 3 * i + 1] = R[j * width + i];
 			outputImg_rotate[j * stride + 3 * i + 2] = R[j * width + i];
